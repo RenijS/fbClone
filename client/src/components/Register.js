@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 export default function Register() {
   const [regData, setRegData] = useState({
@@ -21,14 +22,12 @@ export default function Register() {
 
   const registerUser = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:9000/api/register", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...regData }),
-    });
-
-    const data = await response.json();
-    console.log(data);
+    axios({
+      method: "POST",
+      data: { ...regData },
+      withCredentials: true,
+      url: "http://localhost:9000/api/register",
+    }).then((res) => console.log(res));
   };
 
   return (
