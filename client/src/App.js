@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [data, setData] = useState(null);

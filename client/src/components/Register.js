@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Button, Form } from "react-bootstrap";
 
 export default function Register() {
   const [regData, setRegData] = useState({
@@ -31,60 +32,58 @@ export default function Register() {
   };
 
   return (
-    <div className="registerContain">
-      <h1>Register</h1>
-      <form onSubmit={registerUser}>
-        <div className="row">
-          <div className="column">
-            <label htmlFor="firstName">First Name</label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              onChange={handleOnChange}
-              value={regData.firstName}
-            />
-          </div>
-          <div className="column">
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              onChange={handleOnChange}
-              value={regData.lastName}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="column">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              onChange={handleOnChange}
-              value={regData.email}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="column">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              onChange={handleOnChange}
-              value={regData.password}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <button type="submit">Register</button>
-          <button type="button">Clear</button>
-        </div>
-      </form>
+    <div className="d-flex justify-content-center mt-5">
+      <Form
+        onSubmit={registerUser}
+        className="w-75 d-flex flex-column border p-4 shadow rounded"
+      >
+        <h1 className="fw-bold">Sign Up</h1>
+        <span>It's quick and easy</span>
+        <hr />
+        <Form.Group className="mb-3 d-flex gap-3" controlId="formBasicEmail">
+          <Form.Control
+            type="text"
+            placeholder="First name"
+            className="fs-5"
+            onChange={handleOnChange}
+            value={regData.firstName}
+          />
+          <Form.Control
+            type="text"
+            placeholder="Last name"
+            className="fs-5"
+            onChange={handleOnChange}
+            value={regData.lastName}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Control
+            type="email"
+            placeholder="Enter email address"
+            className="fs-5"
+            onChange={handleOnChange}
+            value={regData.email}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            className="fs-5"
+            onChange={handleOnChange}
+            value={regData.password}
+          />
+        </Form.Group>
+        <Button variant="success" type="button" className="fs-4 fw-bold mt-2">
+          Sign up
+        </Button>
+        <hr />
+        <a href="/login">
+          <Button variant="primary" type="submit" className="fs-4 fw-bold">
+            Already got account?
+          </Button>
+        </a>
+      </Form>
     </div>
   );
 }
